@@ -5,9 +5,13 @@
       this._nextId = 1;
     }
 
-    add(title) {
+    static _cleanTitle(title) {
       if (!title || !title.trim()) throw new Error("Title must not be empty");
-      const task = { id: this._nextId++, title: title.trim(), completed: false };
+      return title.trim();
+    }
+
+    add(title) {
+      const task = { id: this._nextId++, title: TodoList._cleanTitle(title), completed: false };
       this._tasks.push(task);
       return task;
     }
