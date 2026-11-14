@@ -38,6 +38,11 @@
       return task;
     }
 
+    search(keyword) {
+      const k = keyword.trim().toLowerCase();
+      return this._tasks.filter(t => t.title.toLowerCase().includes(k));
+    }
+
     all() {
       return [...this._tasks];
     }
