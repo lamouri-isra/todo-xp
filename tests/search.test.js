@@ -1,3 +1,4 @@
+(function () {
 const MT = typeof require !== "undefined" ? require("./mini-test.js") : window.MT;
 const { TodoList } = typeof require !== "undefined" ? require("../js/todolist.js") : window;
 const { test, assertEqual, assertThrows } = MT;
@@ -15,3 +16,4 @@ test("search is case-insensitive", () => {
 test("search with no match returns an empty array", () => {
   assertEqual(sample().search("xyz"), []);
 });
+})();

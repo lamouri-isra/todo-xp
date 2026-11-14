@@ -1,3 +1,4 @@
+(function () {
 const MT = typeof require !== "undefined" ? require("./mini-test.js") : window.MT;
 const { TodoList } = typeof require !== "undefined" ? require("../js/todolist.js") : window;
 const { test, assertEqual, assertThrows } = MT;
@@ -19,3 +20,4 @@ test("delete removes only the target", () => {
 test("delete on unknown id throws", () => {
   assertThrows(() => new TodoList().delete(42));
 });
+})();

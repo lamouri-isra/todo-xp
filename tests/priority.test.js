@@ -1,3 +1,4 @@
+(function () {
 const MT = typeof require !== "undefined" ? require("./mini-test.js") : window.MT;
 const { TodoList } = typeof require !== "undefined" ? require("../js/todolist.js") : window;
 const { test, assertEqual, assertThrows } = MT;
@@ -26,3 +27,4 @@ test("byPriority sorts High, Medium, Low", () => {
   todo.add("low", "Low"); todo.add("high", "High"); todo.add("med");
   assertEqual(todo.byPriority().map(t => t.title), ["high", "med", "low"]);
 });
+})();
