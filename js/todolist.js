@@ -16,18 +16,20 @@
       return task;
     }
 
+    _get(id) {
+      const task = this._tasks.find(t => t.id === id);
+      if (!task) throw new Error(`Task ${id} not found`);
+      return task;
+    }
+
     complete(id) {
-      for (const task of this._tasks) {
-        if (task.id === id) { task.completed = true; return task; }
-      }
-      throw new Error(`Task ${id} not found`);
+      const task = this._get(id);
+      task.completed = true;
+      return task;
     }
 
     delete(id) {
-      for (let i = 0; i < this._tasks.length; i++) {
-        if (this._tasks[i].id === id) { this._tasks.splice(i, 1); return; }
-      }
-      throw new Error(`Task ${id} not found`);
+      this._tasks.splice(this._tasks.indexOf(this._get(id)), 1);
     }
 
     all() {
