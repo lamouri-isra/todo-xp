@@ -1,3 +1,4 @@
+(function () {
 const MT = typeof require !== "undefined" ? require("./mini-test.js") : window.MT;
 const { TodoList } = typeof require !== "undefined" ? require("../js/todolist.js") : window;
 const { test, assertEqual, assertThrows } = MT;
@@ -18,3 +19,4 @@ test("added task appears in the list", () => {
 test("add rejects an empty title", () => {
   assertThrows(() => new TodoList().add("   "));
 });
+})();
