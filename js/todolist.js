@@ -23,6 +23,13 @@
       throw new Error(`Task ${id} not found`);
     }
 
+    delete(id) {
+      for (let i = 0; i < this._tasks.length; i++) {
+        if (this._tasks[i].id === id) { this._tasks.splice(i, 1); return; }
+      }
+      throw new Error(`Task ${id} not found`);
+    }
+
     all() {
       return [...this._tasks];
     }
