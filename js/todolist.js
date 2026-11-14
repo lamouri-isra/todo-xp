@@ -1,4 +1,6 @@
 (function (root) {
+  const PRIORITIES = ["High", "Medium", "Low"];
+
   class TodoList {
     constructor() {
       this._tasks = [];
@@ -10,8 +12,18 @@
       return title.trim();
     }
 
-    add(title) {
-      const task = { id: this._nextId++, title: TodoList._cleanTitle(title), completed: false };
+    static _checkPriority(priority) {
+      if (!PRIORITIES.includes(priority)) throw new Error("Priority must be High, Medium or Low");
+      return priority;
+    }
+
+    add(title, priority = "Medium") {
+      const task = {
+        id: this._nextId++,
+        title: TodoList._cleanTitle(title),
+        completed: false,
+        priority: TodoList._checkPriority(priority),
+      };
       this._tasks.push(task);
       return task;
     }
@@ -41,6 +53,16 @@
     search(keyword) {
       const k = keyword.trim().toLowerCase();
       return this._tasks.filter(t => t.title.toLowerCase().includes(k));
+    }
+
+    setPriority(id, priority) {
+      const task = this._get(id);
+      task.priority = TodoList._checkPriority(priority);
+      return task;
+    }
+
+    byPriority() {
+      return [...this._tasks].sort((a, b) => PRIORITIES.indexOf(a.priority) - PRIORITIES.indexOf(b.priority));
     }
 
     all() {
