@@ -32,6 +32,12 @@
       this._tasks.splice(this._tasks.indexOf(this._get(id)), 1);
     }
 
+    modify(id, newTitle) {
+      const task = this._get(id);
+      task.title = TodoList._cleanTitle(newTitle);
+      return task;
+    }
+
     all() {
       return [...this._tasks];
     }
