@@ -16,6 +16,13 @@
       return task;
     }
 
+    complete(id) {
+      for (const task of this._tasks) {
+        if (task.id === id) { task.completed = true; return task; }
+      }
+      throw new Error(`Task ${id} not found`);
+    }
+
     all() {
       return [...this._tasks];
     }
