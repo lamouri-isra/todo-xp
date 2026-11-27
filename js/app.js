@@ -87,5 +87,7 @@
     render();
   });
 
+  $("clear").addEventListener("click", () => { todo.clearCompleted(); render(); });
+
   render();
 })();
