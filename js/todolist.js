@@ -65,6 +65,12 @@
       return [...this._tasks].sort((a, b) => PRIORITIES.indexOf(a.priority) - PRIORITIES.indexOf(b.priority));
     }
 
+    clearCompleted() {
+      const before = this._tasks.length;
+      this._tasks = this._tasks.filter(t => !t.completed);
+      return before - this._tasks.length;
+    }
+
     all() {
       return [...this._tasks];
     }
